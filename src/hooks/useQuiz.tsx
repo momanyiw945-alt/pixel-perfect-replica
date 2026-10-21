@@ -44,7 +44,7 @@ function buildOptionOrder(ordered: Question[]): Record<string, string[]> {
 // "mixed": sample across domains in proportion to each domain's weight
 // midpoint using largest-remainder allocation, capped by availability, with
 // any shortfall filled from domains that still have questions.
-export function allocateMixed(count: number): Question[] {
+  function allocateMixed(count: number): Question[] {
   const domains = getDomains();
   const pools = new Map(domains.map((d) => [d.id, getQuestionsByDomain(d.id)] as const));
   const midpoints = domains.map((d) => (d.weightMin + d.weightMax) / 2);
@@ -165,8 +165,9 @@ export function QuizProvider({ children }: { children: ReactNode }) {
     } else if (mode === "weak") {
       pool = buildWeakQuestions();
     } else {
-      const domainQuestions = getQuestionsByDomain(mode);
-      pool = shuffle(count === "all" ? domainQuestions : domainQuestions.slice(0, count));
+      // Shuffle first, then slice, so each session gets a different random subset.
+      const domainQuestions = shuffle(getQuestionsByDomain(mode));
+      pool = count === "all" ? domainQuestions : domainQuestions.slice(0, count);
     }
     if (pool.length === 0) return;
     const ordered = shuffle(pool);

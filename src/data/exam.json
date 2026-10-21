@@ -1,1 +1,550 @@
-{"exam": {"id": "az-900", "name": "AZ-900 Smart Quiz", "fullName": "Microsoft Azure Fundamentals", "passTarget": 70, "languages": [{"code": "sw", "name": "Kiswahili"}], "domains": [{"id": "cloud-concepts", "name": "Cloud Concepts", "description": "What the cloud is, why people use it, and the shared responsibility model.", "icon": "Cloud", "weightMin": 25, "weightMax": 30}, {"id": "architecture-services", "name": "Azure Architecture & Services", "description": "The building blocks of Azure: regions, compute, storage and networking services.", "icon": "Server", "weightMin": 35, "weightMax": 40}, {"id": "management-governance", "name": "Azure Management & Governance", "description": "How Azure is organised and kept safe: portals, cost management, policies and compliance.", "icon": "ShieldCheck", "weightMin": 30, "weightMax": 35}]}, "questions": [{"id": "q-cloud-001", "domainId": "cloud-concepts", "topic": "What is cloud computing", "difficulty": "easy", "question": "What is cloud computing?", "options": [{"id": "a", "text": "Renting computing services like storage and servers over the internet", "whyCorrectOrWrong": "Correct. The cloud lets you use computing power and storage over the internet, and you usually pay only for what you use."}, {"id": "b", "text": "Buying your own servers and keeping them in your office", "whyCorrectOrWrong": "That is called an on-premises setup, not cloud computing."}, {"id": "c", "text": "A way to connect two offices with cables", "whyCorrectOrWrong": "That describes networking between sites, not cloud computing."}, {"id": "d", "text": "Storing files only on your own computer", "whyCorrectOrWrong": "Local storage keeps everything on one machine, so nothing is delivered over the internet."}], "correctOptionId": "a", "plainEnglish": "Cloud computing means using computers and storage over the internet instead of owning them. You pay for what you use, a bit like electricity.", "plainEnglishLocal": {"sw": "Cloud computing ni kutumia kompyuta na hifadhi kupitia intaneti badala ya kuzinunua wewe mwenyewe. Unalipa kadri unavyotumia, kama umeme."}, "learnMoreUrl": "https://learn.microsoft.com/training/"}, {"id": "q-arch-001", "domainId": "architecture-services", "topic": "Storage services", "difficulty": "easy", "question": "You need a simple place in Azure to keep files, backups and pictures in the cloud. Which service fits best?", "options": [{"id": "a", "text": "Azure Blob Storage", "whyCorrectOrWrong": "Correct. Blob Storage keeps unstructured files like documents, photos and backups in the cloud."}, {"id": "b", "text": "Azure Virtual Machines", "whyCorrectOrWrong": "Virtual Machines give you computing power to run programs, not simple file storage."}, {"id": "c", "text": "Azure Active Directory", "whyCorrectOrWrong": "That service handles sign-ins and identities, not file storage."}, {"id": "d", "text": "Azure Firewall", "whyCorrectOrWrong": "A firewall protects network traffic, it does not store your files."}], "correctOptionId": "a", "plainEnglish": "Blob Storage is Azure's shelf for unstructured files like documents, photos and backups. It grows with you as your files increase.", "plainEnglishLocal": {"sw": "Blob Storage ni kabati la Azure kwa faili kama vyati, picha na backups. Nafasi yake huongeza kadri faili zako zinavyozidi."}, "learnMoreUrl": "https://learn.microsoft.com/training/"}, {"id": "q-mgmt-001", "domainId": "management-governance", "topic": "Resource groups", "difficulty": "easy", "question": "In Azure, what is a resource group?", "options": [{"id": "a", "text": "A logical container that holds related resources like virtual machines and storage", "whyCorrectOrWrong": "Correct. A resource group is a folder-like container, so you can manage or delete related resources together."}, {"id": "b", "text": "A physical server in a Microsoft datacentre", "whyCorrectOrWrong": "Physical servers sit underneath Azure, but a resource group is a logical container, not hardware."}, {"id": "c", "text": "A subscription used to pay for Azure", "whyCorrectOrWrong": "A subscription is the billing level above resource groups, not the group itself."}, {"id": "d", "text": "A web browser for the Azure portal", "whyCorrectOrWrong": "You manage resource groups through the portal, but they are not a browser."}], "correctOptionId": "a", "plainEnglish": "A resource group is a folder-like container for related Azure resources. You can create, update or delete everything inside it together.", "learnMoreUrl": "https://learn.microsoft.com/training/"}]}
+{
+  "exam": {
+    "id": "az-900",
+    "name": "AZ-900 Smart Quiz",
+    "fullName": "Microsoft Azure Fundamentals",
+    "passTarget": 70,
+    "languages": [{ "code": "sw", "name": "Kiswahili" }],
+    "domains": [
+      {
+        "id": "cloud-concepts",
+        "name": "Cloud Concepts",
+        "description": "The big ideas behind the cloud: what it is, why people use it, and the main service types.",
+        "icon": "Cloud",
+        "weightMin": 25,
+        "weightMax": 30
+      },
+      {
+        "id": "architecture-services",
+        "name": "Azure Architecture & Services",
+        "description": "How Azure is organised, plus the core compute, networking, storage and security services.",
+        "icon": "Server",
+        "weightMin": 35,
+        "weightMax": 40
+      },
+      {
+        "id": "management-governance",
+        "name": "Azure Management & Governance",
+        "description": "Controlling cost, setting rules, and managing and monitoring your Azure resources.",
+        "icon": "ShieldCheck",
+        "weightMin": 30,
+        "weightMax": 35
+      }
+    ]
+  },
+  "questions": [
+    {
+      "id": "cc-01",
+      "domainId": "cloud-concepts",
+      "topic": "Shared responsibility model",
+      "difficulty": "easy",
+      "question": "Whether you use IaaS, PaaS or SaaS, which of these is always your responsibility as the customer?",
+      "options": [
+        { "id": "a", "text": "Physical security of the datacenter", "whyCorrectOrWrong": "Not this one. The cloud provider always looks after the physical datacenter, including buildings, power and guards." },
+        { "id": "b", "text": "Replacing failed server hardware", "whyCorrectOrWrong": "Not this one. Hardware is the provider's job in every service type." },
+        { "id": "c", "text": "Your data and who is allowed to access it", "whyCorrectOrWrong": "Correct. Your information and data, and the accounts and access you give people, stay your responsibility in every cloud service type." },
+        { "id": "d", "text": "Maintaining the datacenter's network cables", "whyCorrectOrWrong": "Not this one. Physical networking inside the datacenter belongs to the provider." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "The shared responsibility model says the cloud provider and you each look after different parts. The provider secures the buildings and hardware; you are always responsible for your own data and who can access it. Think of renting a stall in a market: the market owner secures the gate, but you decide who gets the key to your stall.",
+      "plainEnglishLocal": {
+        "sw": "Mfumo wa majukumu yanayoshirikiwa unamaanisha mtoa huduma wa wingu na wewe mnagawana majukumu. Mtoa huduma analinda majengo na vifaa; wewe unawajibika daima kwa data yako na nani anayeruhusiwa kuifikia. Fikiria kupanga kibanda sokoni: mwenye soko analinda lango kuu, lakini wewe ndiye unayeamua nani apate ufunguo wa kibanda chako."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "cc-02",
+      "domainId": "cloud-concepts",
+      "topic": "Cloud models",
+      "difficulty": "easy",
+      "question": "A hospital must keep patient records on servers in its own building because of regulation, but wants to run its public website in the cloud. Which cloud model fits?",
+      "options": [
+        { "id": "a", "text": "Private cloud only", "whyCorrectOrWrong": "Not quite. This would keep everything on dedicated resources, so the public website would miss the scale and pay-as-you-go pricing of the public cloud." },
+        { "id": "b", "text": "Hybrid cloud", "whyCorrectOrWrong": "Correct. A hybrid cloud combines private (on-site) infrastructure with public cloud services, so the records stay in the building while the website runs in the cloud." },
+        { "id": "c", "text": "Public cloud only", "whyCorrectOrWrong": "Not quite. This would move the patient records off-site, which the hospital's regulation does not allow." },
+        { "id": "d", "text": "Serverless", "whyCorrectOrWrong": "Not quite. Serverless is a way of running code without managing servers, not a cloud model." }
+      ],
+      "correctOptionId": "b",
+      "plainEnglish": "A hybrid cloud mixes your own private servers with a public cloud and lets them work together. It is like a shop owner who keeps cash and records in a safe at the back, but sells goods at a busy roadside stall that anyone can reach.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "cc-03",
+      "domainId": "cloud-concepts",
+      "topic": "Consumption-based model",
+      "difficulty": "easy",
+      "question": "What does the consumption-based pricing model mean?",
+      "options": [
+        { "id": "a", "text": "You pay for the resources you actually use", "whyCorrectOrWrong": "Correct. With consumption-based pricing you pay for what you use, with no big upfront purchase, so using less costs less." },
+        { "id": "b", "text": "You pay the same fixed fee every month, however much you use", "whyCorrectOrWrong": "Not quite. That is a flat-rate model, where your bill does not follow your usage." },
+        { "id": "c", "text": "You pay for a full year of hardware upfront", "whyCorrectOrWrong": "Not quite. Large upfront purchases are capital expenditure, which is what the consumption-based model avoids." },
+        { "id": "d", "text": "You pay only when you cancel your subscription", "whyCorrectOrWrong": "Not quite. Cloud providers bill for usage as it happens, not at cancellation." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "Consumption-based pricing means you pay for what you use, like buying airtime in small bundles instead of paying a fixed monthly bill. When you use less, you pay less; when you use more, you pay for the extra.",
+      "plainEnglishLocal": {
+        "sw": "Bei ya matumizi inamaanisha unalipa kwa kile unachotumia tu, kama kununua muda wa maongezi (airtime) kwa vifurushi vidogo badala ya bili isiyobadilika kila mwezi. Ukitumia kidogo, unalipa kidogo; ukitumia zaidi, unalipa zaidi."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "cc-04",
+      "domainId": "cloud-concepts",
+      "topic": "IaaS, PaaS and SaaS",
+      "difficulty": "medium",
+      "question": "A team wants to publish a web app without managing servers or operating systems, but still wants control of its own code and data. Which service type fits best?",
+      "options": [
+        { "id": "a", "text": "Infrastructure as a service (IaaS)", "whyCorrectOrWrong": "Not quite. With IaaS you rent virtual machines and must still manage the operating system and software yourself." },
+        { "id": "b", "text": "Software as a service (SaaS)", "whyCorrectOrWrong": "Not quite. SaaS is a finished application you simply use; you do not deploy your own code on it." },
+        { "id": "c", "text": "On-premises hosting", "whyCorrectOrWrong": "Not quite. On-premises means you own and manage the servers yourself, which is the opposite of what the team wants." },
+        { "id": "d", "text": "Platform as a service (PaaS)", "whyCorrectOrWrong": "Correct. With PaaS the provider manages the servers and operating system, and you bring your own application code and data." }
+      ],
+      "correctOptionId": "d",
+      "plainEnglish": "Platform as a service (PaaS) means the provider manages the servers and operating system, and you only bring your app and data. It is like renting a fully equipped kitchen at a food stall: the stove and fridge are looked after, and you just cook your own recipe.",
+      "plainEnglishLocal": {
+        "sw": "Jukwaa kama huduma (PaaS) inamaanisha mtoa huduma anasimamia seva na mfumo endeshi, na wewe unaleta programu yako na data tu. Ni kama kukodisha jiko lililokamilika: jiko na friji vinatunzwa na wengine, wewe unapika mapishi yako tu."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "cc-05",
+      "domainId": "cloud-concepts",
+      "topic": "Serverless",
+      "difficulty": "medium",
+      "question": "Which statement about serverless computing is correct?",
+      "options": [
+        { "id": "a", "text": "There are no physical servers involved anywhere", "whyCorrectOrWrong": "Not quite. Servers still exist; the provider manages them so you never have to." },
+        { "id": "b", "text": "You do not manage the servers, and your code runs when triggered, typically billed by how much it runs", "whyCorrectOrWrong": "Correct. Serverless hides the infrastructure and typically charges based on actual execution." },
+        { "id": "c", "text": "You must patch the operating system yourself", "whyCorrectOrWrong": "Not quite. Operating system patching is handled by the provider in serverless." },
+        { "id": "d", "text": "You pay a fixed price whether or not your code runs", "whyCorrectOrWrong": "Not quite. Serverless is typically priced by usage, not by a fixed fee for idle time." }
+      ],
+      "correctOptionId": "b",
+      "plainEnglish": "Serverless means you write the code and the cloud provider takes care of all the servers behind it; the servers still exist, you just never touch them. It is like ordering a ride on an app: you do not own or maintain the car, you just pay for the trip.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "cc-06",
+      "domainId": "cloud-concepts",
+      "topic": "Scalability and high availability",
+      "difficulty": "medium",
+      "question": "An online shop gets ten times more visitors every December. Which cloud benefit lets it add capacity for the rush and remove it afterwards?",
+      "options": [
+        { "id": "a", "text": "Predictability", "whyCorrectOrWrong": "Not quite. Predictability is about being able to forecast performance and costs, not adding capacity." },
+        { "id": "b", "text": "High availability", "whyCorrectOrWrong": "Not quite. High availability is about keeping a service running during failures, not about adding capacity for busy periods." },
+        { "id": "c", "text": "Scalability", "whyCorrectOrWrong": "Correct. Scalability means you can increase or decrease resources to match demand." },
+        { "id": "d", "text": "Governance", "whyCorrectOrWrong": "Not quite. Governance is about rules and compliance, not capacity." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "Scalability means you can add or remove computing power as demand changes. Imagine a matatu operator who puts more vehicles on a route during the evening rush and fewer at midday.",
+      "plainEnglishLocal": {
+        "sw": "Scalability (uwezo wa kupanua) inamaanisha unaweza kuongeza au kupunguza nguvu ya kompyuta kadri mahitaji yanavyobadilika. Fikiria mwenye matatu anayeweka magari mengi zaidi njiani wakati wa msongamano wa jioni na machache mchana."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "cc-07",
+      "domainId": "cloud-concepts",
+      "topic": "Cloud pricing models",
+      "difficulty": "medium",
+      "question": "A startup stops buying its own servers and moves to the cloud. How does its spending change?",
+      "options": [
+        { "id": "a", "text": "From upfront capital expenditure (CapEx) to ongoing operational expenditure (OpEx)", "whyCorrectOrWrong": "Correct. Instead of a big upfront purchase of hardware, the startup pays ongoing costs based on what it uses." },
+        { "id": "b", "text": "From operational expenditure (OpEx) to capital expenditure (CapEx)", "whyCorrectOrWrong": "Not quite. This is the wrong way round; the cloud removes large upfront purchases." },
+        { "id": "c", "text": "Its spending stops completely", "whyCorrectOrWrong": "Not quite. Cloud services are paid for; the cost just moves from buying to using." },
+        { "id": "d", "text": "It becomes a fixed amount that never changes", "whyCorrectOrWrong": "Not quite. Cloud costs normally rise and fall with usage." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "CapEx is a big one-time spend on things you own, like buying a generator. OpEx is paying as you go, like buying prepaid electricity tokens. Moving to the cloud shifts you from buying the generator to topping up tokens.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "cc-08",
+      "domainId": "cloud-concepts",
+      "topic": "Benefits of manageability",
+      "difficulty": "medium",
+      "question": "A team wants to recreate the same environment quickly and consistently from templates, and manage it from a portal or command line. Which cloud benefit is this?",
+      "options": [
+        { "id": "a", "text": "Reliability", "whyCorrectOrWrong": "Not quite. Reliability is about recovering from failures and keeping services working." },
+        { "id": "b", "text": "Predictability", "whyCorrectOrWrong": "Not quite. Predictability is about forecasting performance and cost." },
+        { "id": "c", "text": "High availability", "whyCorrectOrWrong": "Not quite. High availability is about uptime, not how easily you deploy and manage resources." },
+        { "id": "d", "text": "Manageability", "whyCorrectOrWrong": "Correct. Manageability covers how easily you can deploy, configure and monitor cloud resources using templates, portals and command-line tools." }
+      ],
+      "correctOptionId": "d",
+      "plainEnglish": "Manageability means it is easy to set up, change and keep an eye on your cloud resources, using a portal, command line or templates. It is like a reusable recipe card: every branch of your restaurant makes the same dish the same way, and you can check on each kitchen from one place.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-01",
+      "domainId": "architecture-services",
+      "topic": "Regions",
+      "difficulty": "easy",
+      "question": "What is a main reason to deploy your resources in an Azure region close to your users?",
+      "options": [
+        { "id": "a", "text": "Lower latency, so the app responds faster", "whyCorrectOrWrong": "Correct. The shorter the distance data travels, the lower the delay, so users get faster responses." },
+        { "id": "b", "text": "It makes all resources free", "whyCorrectOrWrong": "Not quite. Prices can differ between regions, but being close to users does not make anything free." },
+        { "id": "c", "text": "It removes the need for backups", "whyCorrectOrWrong": "Not quite. You still need backups and redundancy whatever region you choose." },
+        { "id": "d", "text": "It automatically makes your resources zone-redundant", "whyCorrectOrWrong": "Not quite. Zone redundancy must be set up for the service, and not every region supports it." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "An Azure region is a geographic area with Azure datacenters in it. The closer the datacenter is to your users, the less time data takes to travel, which is called latency. It is like choosing a shop near your customers: they get served faster than if they had to travel across the country.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-02",
+      "domainId": "architecture-services",
+      "topic": "Availability zones",
+      "difficulty": "medium",
+      "question": "A bank wants its app to keep running even if one datacenter in a region loses power. What should it do?",
+      "options": [
+        { "id": "a", "text": "Put all its virtual machines in a single availability zone", "whyCorrectOrWrong": "Not quite. If that one zone fails, every machine goes down with it." },
+        { "id": "b", "text": "Spread its virtual machines across multiple availability zones", "whyCorrectOrWrong": "Correct. Availability zones are physically separate locations with independent power, cooling and networking, so a failure in one does not stop the others." },
+        { "id": "c", "text": "Add a tag to each virtual machine", "whyCorrectOrWrong": "Not quite. Tags are labels for organising and reporting; they do not protect against outages." },
+        { "id": "d", "text": "Apply a resource lock to each virtual machine", "whyCorrectOrWrong": "Not quite. Locks prevent accidental deletion or changes, not power failures." }
+      ],
+      "correctOptionId": "b",
+      "plainEnglish": "An availability zone is a separate physical location inside an Azure region, with its own power, cooling and networking. Spreading your app across zones is like a shop owner keeping stock in three warehouses in different parts of town: if one loses power, the other two keep you trading.",
+      "plainEnglishLocal": {
+        "sw": "Availability zone ni eneo tofauti la kimwili ndani ya region ya Azure, lenye umeme, upoaji na mtandao wake. Kusambaza programu yako katika zones ni kama mfanyabiashara anayeweka bidhaa kwenye maghala matatu sehemu tofauti za mji: likikatika umeme kwenye moja, mengine mawili yanaendelea kukuwezesha kufanya biashara."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-03",
+      "domainId": "architecture-services",
+      "topic": "Resource hierarchy",
+      "difficulty": "medium",
+      "question": "Which option shows how Azure organises things, from the top level down?",
+      "options": [
+        { "id": "a", "text": "Resource group, subscription, management group, resource", "whyCorrectOrWrong": "Not quite. A resource group sits below a subscription, not above it." },
+        { "id": "b", "text": "Subscription, management group, resource, resource group", "whyCorrectOrWrong": "Not quite. Management groups sit above subscriptions, and resources live inside resource groups." },
+        { "id": "c", "text": "Management group, subscription, resource group, resource", "whyCorrectOrWrong": "Correct. Management groups contain subscriptions, subscriptions contain resource groups, and resource groups contain resources." },
+        { "id": "d", "text": "Resource, resource group, management group, subscription", "whyCorrectOrWrong": "Not quite. This runs from the bottom up and mixes the order of the upper levels." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "Azure organises things in layers: management groups hold subscriptions, subscriptions hold resource groups, and resource groups hold your resources. Think of a company with a head office (management group), branches (subscriptions), departments in each branch (resource groups) and the equipment inside each department (resources).",
+      "plainEnglishLocal": {
+        "sw": "Azure hupanga vitu kwa ngazi: management groups hushikilia subscriptions, subscriptions hushikilia resource groups, na resource groups hushikilia rasilimali zako. Fikiria kampuni yenye makao makuu (management group), matawi (subscriptions), idara katika kila tawi (resource groups) na vifaa ndani ya kila idara (resources)."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-04",
+      "domainId": "architecture-services",
+      "topic": "Resource groups",
+      "difficulty": "easy",
+      "question": "Which statement about Azure resource groups is true?",
+      "options": [
+        { "id": "a", "text": "A resource can belong to several resource groups at the same time", "whyCorrectOrWrong": "Not quite. Each resource belongs to exactly one resource group at a time." },
+        { "id": "b", "text": "A resource group is a physical datacenter", "whyCorrectOrWrong": "Not quite. A resource group is a logical container, not a physical place." },
+        { "id": "c", "text": "All resources in a group must be in the same region", "whyCorrectOrWrong": "Not quite. Resources in one group can be in different regions." },
+        { "id": "d", "text": "Deleting a resource group deletes all the resources inside it", "whyCorrectOrWrong": "Correct. A resource group is a container for related resources, and deleting it removes everything it contains." }
+      ],
+      "correctOptionId": "d",
+      "plainEnglish": "A resource group is a container that holds related Azure resources together so you can manage them as one. Everything in it shares its fate: delete the container and everything inside goes too. It is like a project box: you pack everything for one event in it, and if you throw the box away, its contents go with it.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-05",
+      "domainId": "architecture-services",
+      "topic": "Compute types",
+      "difficulty": "medium",
+      "question": "A developer wants a small piece of code to run each time a photo is uploaded, paying only while it runs and managing no servers. Which service fits?",
+      "options": [
+        { "id": "a", "text": "Azure Virtual Machines", "whyCorrectOrWrong": "Not quite. With virtual machines you manage the operating system and pay while they are running, even when idle." },
+        { "id": "b", "text": "Azure Functions", "whyCorrectOrWrong": "Correct. Azure Functions is a serverless service that runs your code in response to triggers, such as an upload." },
+        { "id": "c", "text": "Azure Virtual Desktop", "whyCorrectOrWrong": "Not quite. Azure Virtual Desktop delivers desktops and apps to users; it is not for running event-triggered code." },
+        { "id": "d", "text": "Azure Virtual Machine Scale Sets", "whyCorrectOrWrong": "Not quite. Scale sets manage groups of virtual machines, which you still have to administer." }
+      ],
+      "correctOptionId": "b",
+      "plainEnglish": "Azure Functions runs a small piece of code only when something triggers it, and you do not manage any servers. It is like a boda boda rider you call only when you have a parcel: you pay per delivery, not to keep a rider waiting all day.",
+      "plainEnglishLocal": {
+        "sw": "Azure Functions huendesha kipande kidogo cha msimbo (code) pale tu kitu kinapoianzisha, na huhitaji kusimamia seva yoyote. Ni kama kumwita bodaboda pale tu unapokuwa na mzigo: unalipa kwa kila safari, si kumngojesha siku nzima."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-06",
+      "domainId": "architecture-services",
+      "topic": "Virtual machine options",
+      "difficulty": "medium",
+      "question": "An online store needs a group of identical virtual machines that automatically grows during busy periods and shrinks afterwards. Which option fits?",
+      "options": [
+        { "id": "a", "text": "Azure Virtual Machine Scale Sets", "whyCorrectOrWrong": "Correct. Scale sets let you run many identical VMs and automatically add or remove them as demand changes." },
+        { "id": "b", "text": "An availability set", "whyCorrectOrWrong": "Not quite. Availability sets spread VMs across hardware to reduce downtime from failures and updates, but they do not scale automatically." },
+        { "id": "c", "text": "Azure Virtual Desktop", "whyCorrectOrWrong": "Not quite. Azure Virtual Desktop delivers desktops and apps to users; it is not for scaling a web workload." },
+        { "id": "d", "text": "A single, larger virtual machine", "whyCorrectOrWrong": "Not quite. One bigger machine does not grow and shrink automatically, and it is still a single point of failure." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "Virtual Machine Scale Sets let you run many identical virtual machines and automatically add or remove them as demand changes. It is like a wedding caterer who brings in more cooks as guests arrive and sends them home when the party ends.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-07",
+      "domainId": "architecture-services",
+      "topic": "Virtual networking",
+      "difficulty": "medium",
+      "question": "A company wants a private, dedicated connection between its office network and Azure that does not travel over the public internet. Which service fits?",
+      "options": [
+        { "id": "a", "text": "Azure DNS", "whyCorrectOrWrong": "Not quite. Azure DNS translates domain names into addresses; it does not connect networks." },
+        { "id": "b", "text": "Azure VPN Gateway", "whyCorrectOrWrong": "Not quite. A VPN gateway encrypts traffic, but that traffic still travels over the public internet." },
+        { "id": "c", "text": "Azure ExpressRoute", "whyCorrectOrWrong": "Correct. ExpressRoute provides a private connection between your network and Azure that does not use the public internet." },
+        { "id": "d", "text": "Virtual network peering", "whyCorrectOrWrong": "Not quite. Peering connects Azure virtual networks to each other, not your office to Azure." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "ExpressRoute is a private, dedicated link between your own network and Azure that does not use the public internet. A VPN, by contrast, uses the public internet but encrypts the traffic. It is like the difference between a private road built just for your trucks and a public highway where you travel in a locked, armoured van.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-08",
+      "domainId": "architecture-services",
+      "topic": "Storage redundancy",
+      "difficulty": "hard",
+      "question": "A company wants its storage data to survive the loss of an entire datacenter in the region, to keep all copies within that one region, and to spend as little as possible. Which redundancy option fits?",
+      "options": [
+        { "id": "a", "text": "Locally redundant storage (LRS)", "whyCorrectOrWrong": "Not quite. LRS keeps its copies in a single datacenter, so losing that datacenter loses access to the data." },
+        { "id": "b", "text": "Geo-redundant storage (GRS)", "whyCorrectOrWrong": "Not quite. GRS copies data to a second, faraway region, so not all copies stay in one region." },
+        { "id": "c", "text": "Geo-zone-redundant storage (GZRS)", "whyCorrectOrWrong": "Not quite. GZRS also replicates to a secondary region and costs more than the requirement allows." },
+        { "id": "d", "text": "Zone-redundant storage (ZRS)", "whyCorrectOrWrong": "Correct. ZRS keeps copies in different availability zones within one region, which survives the loss of a datacenter at lower cost than the geo options." }
+      ],
+      "correctOptionId": "d",
+      "plainEnglish": "Storage redundancy means keeping extra copies of your data so it survives failures. Zone-redundant storage (ZRS) keeps copies in different availability zones of the same region; geo-redundant options also copy to a faraway region. It is like keeping photocopies of an important document in three buildings across town, versus also posting one to another city.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-09",
+      "domainId": "architecture-services",
+      "topic": "Storage tiers",
+      "difficulty": "medium",
+      "question": "A clinic keeps old records it must retain for years but almost never reads. It can wait hours to retrieve them and wants the lowest storage cost. Which access tier fits?",
+      "options": [
+        { "id": "a", "text": "Hot", "whyCorrectOrWrong": "Not quite. The hot tier is for data used often and has the highest storage cost of the three." },
+        { "id": "b", "text": "Archive", "whyCorrectOrWrong": "Correct. The archive tier has the lowest storage cost for rarely used data, and retrieving data can take hours." },
+        { "id": "c", "text": "Cool", "whyCorrectOrWrong": "Not quite. The cool tier suits infrequently used data that must still be available immediately, so it costs more than archive." },
+        { "id": "d", "text": "Premium", "whyCorrectOrWrong": "Not quite. Premium is a performance option for demanding workloads, not a low-cost tier for old records." }
+      ],
+      "correctOptionId": "b",
+      "plainEnglish": "Azure storage tiers trade price against how fast you can get data back. Hot is for data you use all the time, Cool for data you rarely use, and Archive is the cheapest, for data you almost never touch and can wait hours to retrieve. Think of everyday items kept at home versus boxes stored in a rented storeroom across town.",
+      "plainEnglishLocal": {
+        "sw": "Viwango vya hifadhi vya Azure (storage tiers) vinalinganisha bei na kasi ya kupata data yako. Hot ni kwa data unayotumia kila wakati, Cool kwa data unayotumia mara chache, na Archive ni ya bei nafuu zaidi, kwa data usiyoigusa karibu kamwe na unaweza kusubiri masaa kuipata. Fikiria vitu vya kila siku nyumbani dhidi ya masanduku yaliyohifadhiwa kwenye stoo ya kukodi mbali."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-10",
+      "domainId": "architecture-services",
+      "topic": "Authentication methods",
+      "difficulty": "easy",
+      "question": "Which of these is an example of multifactor authentication (MFA)?",
+      "options": [
+        { "id": "a", "text": "Entering a long, complicated password", "whyCorrectOrWrong": "Not quite. However strong, a password alone is a single factor." },
+        { "id": "b", "text": "Using the same password on two different websites", "whyCorrectOrWrong": "Not quite. It is still one factor, and reusing passwords is risky." },
+        { "id": "c", "text": "Entering a password and approving a sign-in prompt in an authenticator app", "whyCorrectOrWrong": "Correct. This combines something you know (the password) with something you have (your phone)." },
+        { "id": "d", "text": "Entering your username and then your password", "whyCorrectOrWrong": "Not quite. A username is an identifier, not a second proof, so this is still one factor." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "Multifactor authentication (MFA) asks for two or more different kinds of proof that you are you, such as something you know (a password) and something you have (your phone). It is like a banking app that asks for your PIN and then a code sent to your phone.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-11",
+      "domainId": "architecture-services",
+      "topic": "Role-based access control",
+      "difficulty": "medium",
+      "question": "An intern should be able to restart virtual machines in one resource group and do nothing else in Azure. What should the admin use?",
+      "options": [
+        { "id": "a", "text": "Azure RBAC: assign a suitable role at the resource group scope", "whyCorrectOrWrong": "Correct. Role-based access control lets you give a person only the permissions they need, at the scope where they need them." },
+        { "id": "b", "text": "Azure Policy", "whyCorrectOrWrong": "Not quite. Azure Policy controls what resources can look like or where they can be created, not what a person is allowed to do." },
+        { "id": "c", "text": "A resource lock", "whyCorrectOrWrong": "Not quite. A lock protects resources from deletion or changes; it does not grant anyone permissions." },
+        { "id": "d", "text": "Azure Advisor", "whyCorrectOrWrong": "Not quite. Advisor gives recommendations about your resources; it does not manage who can access them." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "Role-based access control (RBAC) decides who can do what, and where. It is like giving a shop assistant a key to the till drawer but not the safe: you give only the access the job needs.",
+      "plainEnglishLocal": {
+        "sw": "Role-based access control (RBAC) huamua nani anaweza kufanya nini, na wapi. Ni kama kumpa msaidizi wa duka ufunguo wa droo ya pesa lakini si wa salama: unatoa ufikiaji unaohitajika na kazi hiyo tu."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "as-12",
+      "domainId": "architecture-services",
+      "topic": "Zero Trust",
+      "difficulty": "medium",
+      "question": "Which security approach assumes a breach is possible and verifies every request, even one coming from inside the company network?",
+      "options": [
+        { "id": "a", "text": "Perimeter-only security", "whyCorrectOrWrong": "Not quite. Perimeter security trusts anything already inside the network, which is the opposite of this approach." },
+        { "id": "b", "text": "Single sign-on (SSO)", "whyCorrectOrWrong": "Not quite. SSO lets you sign in once to reach several apps; it is about convenience, not a security philosophy." },
+        { "id": "c", "text": "The shared responsibility model", "whyCorrectOrWrong": "Not quite. This describes who looks after what between provider and customer, not how requests are verified." },
+        { "id": "d", "text": "Zero Trust", "whyCorrectOrWrong": "Correct. Zero Trust means never trusting a request by default: verify explicitly, give least privilege, and assume a breach." }
+      ],
+      "correctOptionId": "d",
+      "plainEnglish": "Zero Trust means never trusting a request just because it comes from inside your network; every request is verified, every time. It is like a building where the guard checks everyone's ID at every door, even employees already inside.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-01",
+      "domainId": "management-governance",
+      "topic": "Pricing calculator",
+      "difficulty": "easy",
+      "question": "Before moving to Azure, a business wants a monthly cost estimate for some virtual machines and storage. Which tool should it use?",
+      "options": [
+        { "id": "a", "text": "Azure Advisor", "whyCorrectOrWrong": "Not quite. Advisor gives recommendations for resources you already run; it does not price a plan." },
+        { "id": "b", "text": "Azure Service Health", "whyCorrectOrWrong": "Not quite. Service Health reports Azure outages and maintenance, not costs." },
+        { "id": "c", "text": "The Azure pricing calculator", "whyCorrectOrWrong": "Correct. You choose services and settings, and the calculator estimates the cost before you deploy anything." },
+        { "id": "d", "text": "Azure Policy", "whyCorrectOrWrong": "Not quite. Policy enforces rules on resources; it does not estimate costs." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "The Azure pricing calculator lets you pick services and see an estimated monthly cost before you deploy anything. It is like writing a shopping list with prices at the market before you leave home, so you know your budget.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-02",
+      "domainId": "management-governance",
+      "topic": "Cost management",
+      "difficulty": "medium",
+      "question": "Finance wants an email when a team's Azure spending reaches 80% of its monthly limit. Which capability helps?",
+      "options": [
+        { "id": "a", "text": "Microsoft Cost Management budgets and alerts", "whyCorrectOrWrong": "Correct. You can set a budget and get alerts as spending approaches it. By default the alert only notifies; it does not stop resources." },
+        { "id": "b", "text": "Resource locks", "whyCorrectOrWrong": "Not quite. Locks prevent deletion or changes; they do not track spending." },
+        { "id": "c", "text": "Azure Service Health", "whyCorrectOrWrong": "Not quite. Service Health is about Azure incidents and maintenance, not your costs." },
+        { "id": "d", "text": "Azure Arc", "whyCorrectOrWrong": "Not quite. Azure Arc manages resources that live outside Azure; it is not a spending alert tool." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "Cost Management helps you see, analyse and control Azure spending, including setting budgets and alerts that warn you as spending nears a limit. A budget alert warns you; it does not stop resources by itself. It is like a message from your mobile provider saying your airtime is running low: it warns you, but you decide what to do.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-03",
+      "domainId": "management-governance",
+      "topic": "Tags",
+      "difficulty": "medium",
+      "question": "A company wants to see Azure costs grouped by department, even though each department's resources are spread across many resource groups. What should it use?",
+      "options": [
+        { "id": "a", "text": "Resource locks", "whyCorrectOrWrong": "Not quite. Locks protect resources from deletion or changes; they do not group costs." },
+        { "id": "b", "text": "Availability zones", "whyCorrectOrWrong": "Not quite. Availability zones are about keeping services running during failures." },
+        { "id": "c", "text": "Azure Arc", "whyCorrectOrWrong": "Not quite. Azure Arc manages resources outside Azure; it does not label them for cost reporting." },
+        { "id": "d", "text": "Tags", "whyCorrectOrWrong": "Correct. Tags are name-and-value labels, such as department = Finance, that you can use to group resources and costs across resource groups." }
+      ],
+      "correctOptionId": "d",
+      "plainEnglish": "Tags are name-and-value labels you attach to Azure resources, such as department = Finance. They let you search, group and report on resources and costs in ways that cut across resource groups. It is like putting coloured stickers on items in a shop so you can quickly find everything belonging to one supplier.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-04",
+      "domainId": "management-governance",
+      "topic": "Azure Policy",
+      "difficulty": "medium",
+      "question": "A company wants to make sure new resources can only be created in two approved regions. Which service enforces that?",
+      "options": [
+        { "id": "a", "text": "Azure RBAC", "whyCorrectOrWrong": "Not quite. RBAC controls which actions people may perform, not which regions resources can be created in." },
+        { "id": "b", "text": "Azure Policy", "whyCorrectOrWrong": "Correct. Azure Policy lets you define rules, such as allowed regions, and checks or blocks resources that break them." },
+        { "id": "c", "text": "A resource lock", "whyCorrectOrWrong": "Not quite. A lock prevents deletion or changes to a specific resource; it does not control where new resources are created." },
+        { "id": "d", "text": "Azure Monitor", "whyCorrectOrWrong": "Not quite. Azure Monitor collects data and alerts on how resources are performing; it does not enforce rules." }
+      ],
+      "correctOptionId": "b",
+      "plainEnglish": "Azure Policy checks your resources against rules you set, such as 'only deploy in approved regions', and can block or flag anything that breaks them. It is like a market association's rules for stall owners: they do not say who may enter, they say what is allowed once inside.",
+      "plainEnglishLocal": {
+        "sw": "Azure Policy hukagua rasilimali zako dhidi ya sheria unazoweka, kama 'weka tu katika regions zilizoidhinishwa', na inaweza kuzuia au kuonyesha chochote kinachovunja sheria. Ni kama kanuni za chama cha wafanyabiashara sokoni: hazielezi nani anaingia, bali zinaeleza kinachoruhusiwa ndani."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-05",
+      "domainId": "management-governance",
+      "topic": "Resource locks",
+      "difficulty": "easy",
+      "question": "A critical database must be protected from accidental deletion, even by admins who have permission to delete it. What should be applied?",
+      "options": [
+        { "id": "a", "text": "A tag", "whyCorrectOrWrong": "Not quite. Tags only label resources; they do not stop anyone deleting them." },
+        { "id": "b", "text": "A budget", "whyCorrectOrWrong": "Not quite. A budget tracks spending; it does not protect a resource." },
+        { "id": "c", "text": "An availability zone", "whyCorrectOrWrong": "Not quite. Availability zones help with outages, not accidental deletion." },
+        { "id": "d", "text": "A resource lock", "whyCorrectOrWrong": "Correct. A delete lock blocks deletion even for users who would normally have permission, until the lock is removed." }
+      ],
+      "correctOptionId": "d",
+      "plainEnglish": "A resource lock stops a resource from being deleted or changed by accident, even by someone who has permission. It works like a padlock on a safe: the owner has the key, but has to take a deliberate step to open it.",
+      "plainEnglishLocal": {
+        "sw": "Resource lock huzuia rasilimali isifutwe au kubadilishwa kwa bahati mbaya, hata na mtu mwenye ruhusa. Ni kama kufuli kwenye salama: mwenye ufunguo lazima achukue hatua ya makusudi kuifungua."
+      },
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-06",
+      "domainId": "management-governance",
+      "topic": "Microsoft Purview",
+      "difficulty": "hard",
+      "question": "Which service helps an organisation discover, classify and govern its data across on-premises, multicloud and SaaS sources?",
+      "options": [
+        { "id": "a", "text": "Microsoft Purview", "whyCorrectOrWrong": "Correct. Purview is a data governance and compliance service that helps you find, classify and manage data wherever it lives." },
+        { "id": "b", "text": "Microsoft Defender for Cloud", "whyCorrectOrWrong": "Not quite. Defender for Cloud focuses on security posture and threat protection for your workloads." },
+        { "id": "c", "text": "Azure Advisor", "whyCorrectOrWrong": "Not quite. Advisor gives recommendations on cost, performance, reliability and security for your Azure resources." },
+        { "id": "d", "text": "Azure Arc", "whyCorrectOrWrong": "Not quite. Azure Arc extends Azure management to resources outside Azure; it is not a data classification service." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "Microsoft Purview helps organisations find, classify and govern their data wherever it lives, so they know what sensitive data they hold and who can use it. It is like a records clerk who catalogues every file in every cabinet across all your offices.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-07",
+      "domainId": "management-governance",
+      "topic": "Azure Cloud Shell, CLI and PowerShell",
+      "difficulty": "easy",
+      "question": "An admin wants to run Azure CLI commands from any device using only a web browser, with nothing to install. Which tool fits?",
+      "options": [
+        { "id": "a", "text": "Azure Storage Explorer", "whyCorrectOrWrong": "Not quite. Storage Explorer is an app for browsing and managing storage data; it is not a browser-based command line." },
+        { "id": "b", "text": "Azure Cloud Shell", "whyCorrectOrWrong": "Correct. Cloud Shell is a browser-based command-line environment where you can use Azure CLI or Azure PowerShell without installing anything." },
+        { "id": "c", "text": "Azure Virtual Desktop", "whyCorrectOrWrong": "Not quite. Virtual Desktop delivers full desktops and apps, which is much more than the admin needs." },
+        { "id": "d", "text": "Azure Data Box", "whyCorrectOrWrong": "Not quite. Data Box is a physical device for moving large amounts of data into Azure." }
+      ],
+      "correctOptionId": "b",
+      "plainEnglish": "Azure Cloud Shell is a command-line environment that opens inside your web browser, so you can manage Azure with commands without installing anything. It is like using a ready-set-up computer at a cyber café: you can do your work from any device.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-08",
+      "domainId": "management-governance",
+      "topic": "Azure Arc",
+      "difficulty": "medium",
+      "question": "A company has servers in its own datacenter and in another cloud, and wants to manage them with the same Azure tools as its Azure resources. Which service helps?",
+      "options": [
+        { "id": "a", "text": "Azure ExpressRoute", "whyCorrectOrWrong": "Not quite. ExpressRoute provides a private network connection; it does not bring servers under Azure management." },
+        { "id": "b", "text": "Azure Migrate", "whyCorrectOrWrong": "Not quite. Azure Migrate helps assess and move workloads into Azure; here the servers stay where they are." },
+        { "id": "c", "text": "Azure Arc", "whyCorrectOrWrong": "Correct. Azure Arc lets you manage servers and other resources outside Azure from Azure, using familiar Azure tools." },
+        { "id": "d", "text": "Azure DNS", "whyCorrectOrWrong": "Not quite. Azure DNS hosts domain name records; it does not manage servers." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "Azure Arc lets you manage servers and other resources that live outside Azure, such as in your own datacenter or another cloud, from Azure as if they were part of it. It is like a single control room that can watch the CCTV cameras of branches in many different towns.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-09",
+      "domainId": "management-governance",
+      "topic": "Infrastructure as code and ARM templates",
+      "difficulty": "medium",
+      "question": "A team needs to deploy the same set of Azure resources again and again, consistently, from a file that describes what they want. Which approach fits?",
+      "options": [
+        { "id": "a", "text": "Infrastructure as code using ARM templates", "whyCorrectOrWrong": "Correct. Infrastructure as code describes resources in a file, and ARM templates let you deploy the same setup repeatedly and consistently." },
+        { "id": "b", "text": "Clicking through the Azure portal each time", "whyCorrectOrWrong": "Not quite. Manual steps are slow and easy to get slightly different each time." },
+        { "id": "c", "text": "Using the pricing calculator", "whyCorrectOrWrong": "Not quite. The calculator estimates costs; it does not deploy anything." },
+        { "id": "d", "text": "Applying resource locks", "whyCorrectOrWrong": "Not quite. Locks protect existing resources; they do not create them." }
+      ],
+      "correctOptionId": "a",
+      "plainEnglish": "Infrastructure as code (IaC) means describing the resources you want in a file, so they can be created the same way every time. ARM templates are Azure's way of doing this. It is like a written recipe: anyone can follow it and cook the same dish, instead of cooking from memory each time.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    },
+    {
+      "id": "mg-10",
+      "domainId": "management-governance",
+      "topic": "Azure Service Health",
+      "difficulty": "medium",
+      "question": "A company wants to be told when an Azure outage or planned maintenance affects the services it uses. Which service provides this?",
+      "options": [
+        { "id": "a", "text": "Azure Advisor", "whyCorrectOrWrong": "Not quite. Advisor recommends improvements to your resources; it does not report Azure platform incidents." },
+        { "id": "b", "text": "Azure Monitor", "whyCorrectOrWrong": "Not quite. Azure Monitor collects and analyses data from your own resources and apps, while Service Health reports on Azure itself." },
+        { "id": "c", "text": "Azure Service Health", "whyCorrectOrWrong": "Correct. Service Health tells you about Azure service issues and planned maintenance that may affect the services and regions you use." },
+        { "id": "d", "text": "Microsoft Purview", "whyCorrectOrWrong": "Not quite. Purview is for data governance, not service incidents." }
+      ],
+      "correctOptionId": "c",
+      "plainEnglish": "Azure Service Health tells you about problems or planned maintenance on Azure itself that may affect the services you use. It is like a notice from the electricity company about a power cut in your area, rather than a check of your own wiring.",
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+    }
+  ]
+}
