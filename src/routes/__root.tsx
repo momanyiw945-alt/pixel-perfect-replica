@@ -12,6 +12,10 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { QuizProvider } from "@/hooks/useQuiz";
+
+// Follows the system light/dark setting before first paint.
+const themeScript = `(function(){try{var m=window.matchMedia("(prefers-color-scheme: dark)");var apply=function(){document.documentElement.classList.toggle("dark",m.matches)};apply();if(m.addEventListener){m.addEventListener("change",apply)}else{m.addListener(apply)}}catch(e){}})();`;
 
 function NotFoundComponent() {
   return (
@@ -78,11 +82,19 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "AZ-900 Smart Quiz (Unofficial)" },
+      {
+        name: "description",
+        content:
+          "Unofficial Azure Fundamentals practice quiz. Pick a topic, answer, learn why — progress stays on your device.",
+      },
+      { name: "author", content: "AZ-900 Smart Quiz" },
+      { property: "og:title", content: "AZ-900 Smart Quiz (Unofficial)" },
+      {
+        property: "og:description",
+        content:
+          "Unofficial Azure Fundamentals practice quiz. Pick a topic, answer, learn why.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
@@ -103,9 +115,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
         {children}
@@ -120,8 +133,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <QuizProvider>
+        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+        <Outlet />
+      </QuizProvider>
     </QueryClientProvider>
   );
 }
