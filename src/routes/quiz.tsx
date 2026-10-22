@@ -1,9 +1,9 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
-import { useEffect } from "react";
-import { Hammer } from "lucide-react";
+import { useEffect, useRef } from "react";
 
+import { ExplanationPanel } from "@/components/ExplanationPanel";
 import { Footer } from "@/components/Footer";
-import { ProgressBar } from "@/components/ProgressBar";
+import { QuestionCard } from "@/components/QuestionCard";
 import { Button } from "@/components/ui/button";
 import { useQuiz } from "@/hooks/useQuiz";
 
@@ -24,50 +24,97 @@ export const Route = createFileRoute("/quiz")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: QuizPlaceholder,
+  component: QuizPage,
 });
 
-function QuizPlaceholder() {
+function QuizPage() {
   const quiz = useQuiz();
   const navigate = useNavigate();
+  const nextRef = useRef<HTMLButtonElement>(null);
 
-  // No active session: back to the topics.
+  const session = quiz.session;
+  const question = quiz.currentQuestion;
+  const answered = question ? Boolean(session?.answers[question.id]) : false;
+  const isLast = session ? session.currentIndex === session.questionIds.length - 1 : false;
+
+  // Routing guards, evaluated only after hydration so server and client match.
   useEffect(() => {
-    if (quiz.hydrated && !quiz.session) {
+    if (!quiz.hydrated) return;
+    if (quiz.finished) {
+      navigate({ to: "/results", replace: true });
+      return;
+    }
+    if (!quiz.session) {
       navigate({ to: "/", replace: true });
     }
-  }, [quiz.hydrated, quiz.session, navigate]);
+  }, [quiz.hydrated, quiz.session, quiz.finished, navigate]);
 
-  if (!quiz.hydrated || !quiz.session) {
+  // Move focus to the Next button after answering.
+  useEffect(() => {
+    if (quiz.hydrated && answered) {
+      nextRef.current?.focus();
+    }
+  }, [quiz.hydrated, answered, session?.currentIndex]);
+
+  // Keys 1-4 select an option before answering.
+  useEffect(() => {
+    if (!quiz.hydrated || answered) return;
+    const handler = (event: KeyboardEvent) => {
+      const index = Number(event.key) - 1;
+      if (!question || !session || Number.isNaN(index)) return;
+      if (index < 0 || index > 3) return;
+      const optionId = session.optionOrder[question.id]?.[index];
+      if (optionId) quiz.answer(optionId);
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [quiz.hydrated, answered, question, session, quiz]);
+
+  if (!quiz.hydrated || !session || !question) {
     return <div className="min-h-screen" />;
   }
 
-  const total = quiz.session.questionIds.length;
-  const position = Math.min(quiz.session.currentIndex + 1, total);
+  const optionOrder = session.optionOrder[question.id] ?? question.options.map((o) => o.id);
 
   return (
     <div className="flex min-h-screen flex-col">
-      <main className="mx-auto flex w-full max-w-xl flex-1 flex-col items-center justify-center gap-4 px-4 py-10 text-center">
-        <span className="flex size-14 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <Hammer className="size-7" aria-hidden="true" />
-        </span>
-        <h1 className="text-xl font-semibold text-foreground">Quiz screen coming next</h1>
-        <p className="text-sm text-muted-foreground">
-          Your session is saved — question {position} of {total} is waiting for the full quiz
-          experience in the next update.
-        </p>
-        <ProgressBar current={position} total={total} />
-        <Button
-          variant="outline"
-          className="mt-2 min-h-12"
-          onClick={() => {
+      <main className="mx-auto w-full max-w-xl flex-1 px-4 pb-32 pt-4">
+        <QuestionCard
+          question={question}
+          position={session.currentIndex + 1}
+          total={session.questionIds.length}
+          optionOrder={optionOrder}
+          chosenOptionId={session.answers[question.id] ?? null}
+          currentStreak={quiz.currentStreak}
+          onAnswer={quiz.answer}
+          onQuit={() => {
             quiz.quit();
             navigate({ to: "/" });
           }}
-        >
-          Quit to topics
-        </Button>
+        />
+
+        {answered && (
+          <div className="mt-4">
+            <ExplanationPanel question={question} />
+          </div>
+        )}
       </main>
+
+      {answered && (
+        <div
+          className="sticky bottom-0 border-t bg-background/95 px-4 py-3 backdrop-blur"
+          style={{ paddingBottom: "calc(0.75rem + env(safe-area-inset-bottom))" }}
+        >
+          <Button
+            ref={nextRef}
+            className="h-12 w-full text-base font-semibold"
+            onClick={quiz.next}
+          >
+            {isLast ? "See results" : "Next"}
+          </Button>
+        </div>
+      )}
+
       <Footer />
     </div>
   );
