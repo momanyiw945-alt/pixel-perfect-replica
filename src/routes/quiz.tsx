@@ -49,6 +49,12 @@ function QuizPage() {
     }
   }, [quiz.hydrated, quiz.session, quiz.finished, navigate]);
 
+  // Start each new question at the top of the page (instant, no animation).
+  useEffect(() => {
+    if (!quiz.hydrated) return;
+    window.scrollTo(0, 0);
+  }, [quiz.hydrated, session?.currentIndex]);
+
   // Move focus to the Next button after answering.
   useEffect(() => {
     if (quiz.hydrated && answered) {
@@ -60,6 +66,8 @@ function QuizPage() {
   useEffect(() => {
     if (!quiz.hydrated || answered) return;
     const handler = (event: KeyboardEvent) => {
+      // Leave browser shortcuts such as Ctrl+1 (switch tab) alone.
+      if (event.ctrlKey || event.metaKey || event.altKey) return;
       const index = Number(event.key) - 1;
       if (!question || !session || Number.isNaN(index)) return;
       if (index < 0 || index > 3) return;

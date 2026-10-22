@@ -90,7 +90,10 @@ export function ExplanationPanel({ question }: ExplanationPanelProps) {
           {hasLocal && <LanguageToggle value={language} onChange={changeLanguage} />}
         </div>
         <p className="mt-2 text-sm text-foreground">{question.plainEnglish}</p>
-        {hasLocal && language && !localText && (
+        {/* Shown whenever a local language is chosen but this question has no
+            text in it. Not tied to hasLocal, because questions without local
+            text never show the toggle. */}
+        {language && !localText && (
           <p className="mt-2 text-xs italic text-muted-foreground">
             Not available in {getLanguages().find((l) => l.code === language)?.name ?? "this language"} for this question yet.
           </p>
