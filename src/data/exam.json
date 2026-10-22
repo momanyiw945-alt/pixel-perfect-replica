@@ -206,7 +206,7 @@
       "plainEnglishLocal": {
         "sw": "Availability zone ni eneo tofauti la kimwili ndani ya region ya Azure, lenye umeme, upoaji na mtandao wake. Kusambaza programu yako katika zones ni kama mfanyabiashara anayeweka bidhaa kwenye maghala matatu sehemu tofauti za mji: likikatika umeme kwenye moja, mengine mawili yanaendelea kukuwezesha kufanya biashara."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-core-architectural-components-of-azure/"
     },
     {
       "id": "as-03",
@@ -276,7 +276,7 @@
       ],
       "correctOptionId": "a",
       "plainEnglish": "Virtual Machine Scale Sets let you run many identical virtual machines and automatically add or remove them as demand changes. It is like a wedding caterer who brings in more cooks as guests arrive and sends them home when the party ends.",
-      "learnMoreUrl": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/"
     },
     {
       "id": "as-07",
@@ -292,7 +292,7 @@
       ],
       "correctOptionId": "c",
       "plainEnglish": "ExpressRoute is a private, dedicated link between your own network and Azure that does not use the public internet. A VPN, by contrast, uses the public internet but encrypts the traffic. It is like the difference between a private road built just for your trucks and a public highway where you travel in a locked, armoured van.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/"
     },
     {
       "id": "as-08",
@@ -343,7 +343,7 @@
       ],
       "correctOptionId": "c",
       "plainEnglish": "Multifactor authentication (MFA) asks for two or more different kinds of proof that you are you, such as something you know (a password) and something you have (your phone). It is like a banking app that asks for your PIN and then a code sent to your phone.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security"
     },
     {
       "id": "as-11",
@@ -378,7 +378,7 @@
       ],
       "correctOptionId": "d",
       "plainEnglish": "Zero Trust means never trusting a request just because it comes from inside your network; every request is verified, every time. It is like a building where the guard checks everyone's ID at every door, even employees already inside.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security"
     },
     {
       "id": "mg-01",
@@ -445,7 +445,7 @@
       "plainEnglishLocal": {
         "sw": "Azure Policy hukagua rasilimali zako dhidi ya sheria unazoweka, kama 'weka tu katika regions zilizoidhinishwa', na inaweza kuzuia au kuonyesha chochote kinachovunja sheria. Ni kama kanuni za chama cha wafanyabiashara sokoni: hazielezi nani anaingia, bali zinaeleza kinachoruhusiwa ndani."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/azure/governance/policy/overview"
     },
     {
       "id": "mg-05",
