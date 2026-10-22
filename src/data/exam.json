@@ -276,7 +276,7 @@
       ],
       "correctOptionId": "a",
       "plainEnglish": "Virtual Machine Scale Sets let you run many identical virtual machines and automatically add or remove them as demand changes. It is like a wedding caterer who brings in more cooks as guests arrive and sends them home when the party ends.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/azure/virtual-machine-scale-sets/overview"
     },
     {
       "id": "as-07",
@@ -299,16 +299,16 @@
       "domainId": "architecture-services",
       "topic": "Storage redundancy",
       "difficulty": "hard",
-      "question": "A company wants its storage data to survive the loss of an entire datacenter in the region, to keep all copies within that one region, and to spend as little as possible. Which redundancy option fits?",
+      "question": "A company wants its storage data to survive the loss of an entire datacenter in the region, and to keep every copy within that one region. Which redundancy option fits?",
       "options": [
-        { "id": "a", "text": "Locally redundant storage (LRS)", "whyCorrectOrWrong": "Not quite. LRS keeps its copies in a single datacenter, so losing that datacenter loses access to the data." },
+        { "id": "a", "text": "Locally redundant storage (LRS)", "whyCorrectOrWrong": "Not quite. LRS keeps all its copies in one physical location, so a failure there can make the data unavailable." },
         { "id": "b", "text": "Geo-redundant storage (GRS)", "whyCorrectOrWrong": "Not quite. GRS copies data to a second, faraway region, so not all copies stay in one region." },
-        { "id": "c", "text": "Geo-zone-redundant storage (GZRS)", "whyCorrectOrWrong": "Not quite. GZRS also replicates to a secondary region and costs more than the requirement allows." },
-        { "id": "d", "text": "Zone-redundant storage (ZRS)", "whyCorrectOrWrong": "Correct. ZRS keeps copies in different availability zones within one region, which survives the loss of a datacenter at lower cost than the geo options." }
+        { "id": "c", "text": "Geo-zone-redundant storage (GZRS)", "whyCorrectOrWrong": "Not quite. GZRS also copies data to a second region, so not every copy stays in one region." },
+        { "id": "d", "text": "Zone-redundant storage (ZRS)", "whyCorrectOrWrong": "Correct. ZRS copies data synchronously across three availability zones in one region, so it survives losing a datacenter and keeps every copy in that region." }
       ],
       "correctOptionId": "d",
       "plainEnglish": "Storage redundancy means keeping extra copies of your data so it survives failures. Zone-redundant storage (ZRS) keeps copies in different availability zones of the same region; geo-redundant options also copy to a faraway region. It is like keeping photocopies of an important document in three buildings across town, versus also posting one to another city.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/3-redundancy"
     },
     {
       "id": "as-09",
@@ -317,7 +317,7 @@
       "difficulty": "medium",
       "question": "A clinic keeps old records it must retain for years but almost never reads. It can wait hours to retrieve them and wants the lowest storage cost. Which access tier fits?",
       "options": [
-        { "id": "a", "text": "Hot", "whyCorrectOrWrong": "Not quite. The hot tier is for data used often and has the highest storage cost of the three." },
+        { "id": "a", "text": "Hot", "whyCorrectOrWrong": "Not quite. The hot tier is for data used often and has the highest storage cost of all the access tiers." },
         { "id": "b", "text": "Archive", "whyCorrectOrWrong": "Correct. The archive tier has the lowest storage cost for rarely used data, and retrieving data can take hours." },
         { "id": "c", "text": "Cool", "whyCorrectOrWrong": "Not quite. The cool tier suits infrequently used data that must still be available immediately, so it costs more than archive." },
         { "id": "d", "text": "Premium", "whyCorrectOrWrong": "Not quite. Premium is a performance option for demanding workloads, not a low-cost tier for old records." }
@@ -327,7 +327,7 @@
       "plainEnglishLocal": {
         "sw": "Viwango vya hifadhi vya Azure (storage tiers) vinalinganisha bei na kasi ya kupata data yako. Hot ni kwa data unayotumia kila wakati, Cool kwa data unayotumia mara chache, na Archive ni ya bei nafuu zaidi, kwa data usiyoigusa karibu kamwe na unaweza kusubiri masaa kuipata. Fikiria vitu vya kila siku nyumbani dhidi ya masanduku yaliyohifadhiwa kwenye stoo ya kukodi mbali."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-storage-services/4-describe-azure-storage-services"
     },
     {
       "id": "as-10",
@@ -410,7 +410,7 @@
       ],
       "correctOptionId": "a",
       "plainEnglish": "Cost Management helps you see, analyse and control Azure spending, including setting budgets and alerts that warn you as spending nears a limit. A budget alert warns you; it does not stop resources by itself. It is like a message from your mobile provider saying your airtime is running low: it warns you, but you decide what to do.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/analyze-costs-create-budgets-azure-cost-management/5-build-budgets-alerts"
     },
     {
       "id": "mg-03",
