@@ -50,7 +50,7 @@
       "plainEnglishLocal": {
         "sw": "Mfumo wa majukumu yanayoshirikiwa unamaanisha mtoa huduma wa wingu na wewe mnagawana majukumu. Mtoa huduma analinda majengo na vifaa; wewe unawajibika daima kwa data yako na nani anayeruhusiwa kuifikia. Fikiria kupanga kibanda sokoni: mwenye soko analinda lango kuu, lakini wewe ndiye unayeamua nani apate ufunguo wa kibanda chako."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-cloud-compute/4-describe-shared-responsibility-model"
     },
     {
       "id": "cc-02",
@@ -445,7 +445,7 @@
       "plainEnglishLocal": {
         "sw": "Azure Policy hukagua rasilimali zako dhidi ya sheria unazoweka, kama 'weka tu katika regions zilizoidhinishwa', na inaweza kuzuia au kuonyesha chochote kinachovunja sheria. Ni kama kanuni za chama cha wafanyabiashara sokoni: hazielezi nani anaingia, bali zinaeleza kinachoruhusiwa ndani."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/azure/governance/policy/overview"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance"
     },
     {
       "id": "mg-05",
@@ -464,7 +464,7 @@
       "plainEnglishLocal": {
         "sw": "Resource lock huzuia rasilimali isifutwe au kubadilishwa kwa bahati mbaya, hata na mtu mwenye ruhusa. Ni kama kufuli kwenye salama: mwenye ufunguo lazima achukue hatua ya makusudi kuifungua."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance"
     },
     {
       "id": "mg-06",
@@ -480,7 +480,7 @@
       ],
       "correctOptionId": "a",
       "plainEnglish": "Microsoft Purview helps organisations find, classify and govern their data wherever it lives, so they know what sensitive data they hold and who can use it. It is like a records clerk who catalogues every file in every cabinet across all your offices.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-features-tools-azure-for-governance-compliance"
     },
     {
       "id": "mg-07",
