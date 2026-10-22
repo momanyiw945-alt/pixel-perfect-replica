@@ -102,7 +102,7 @@ describe("useQuiz", () => {
     for (let i = 0; i < QUESTION_COUNT; i++) {
       const question = result.current.currentQuestion!;
       act(() => result.current.answer(question.correctOptionId));
-      if (i < QUESTION_COUNT - 1) act(() => result.current.next());
+      act(() => result.current.next());
     }
     expect(result.current.score).toBe(QUESTION_COUNT);
     expect(result.current.longestStreak).toBe(QUESTION_COUNT);
