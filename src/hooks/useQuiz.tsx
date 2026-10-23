@@ -41,10 +41,29 @@ function buildOptionOrder(ordered: Question[]): Record<string, string[]> {
   return order;
 }
 
+// Builds a fresh session from a pool of questions: shuffled question order,
+// shuffled option order, nothing answered yet.
+function createSession(
+  mode: string,
+  requestedCount: number | "all",
+  pool: Question[]
+): QuizSession {
+  const ordered = shuffle(pool);
+  return {
+    mode,
+    requestedCount,
+    questionIds: ordered.map((q) => q.id),
+    optionOrder: buildOptionOrder(ordered),
+    currentIndex: 0,
+    answers: {},
+    createdAt: Date.now(),
+  };
+}
+
 // "mixed": sample across domains in proportion to each domain's weight
 // midpoint using largest-remainder allocation, capped by availability, with
 // any shortfall filled from domains that still have questions.
-  function allocateMixed(count: number): Question[] {
+function allocateMixed(count: number): Question[] {
   const domains = getDomains();
   const pools = new Map(domains.map((d) => [d.id, getQuestionsByDomain(d.id)] as const));
   const midpoints = domains.map((d) => (d.weightMin + d.weightMax) / 2);
@@ -140,6 +159,7 @@ interface QuizContextValue {
   longestStreak: number;
   weakCount: number;
   startSession: (mode: string, count: number | "all") => void;
+  startRetry: (questionIds: string[]) => void;
   answer: (optionId: string) => void;
   next: () => void;
   quit: () => void;
@@ -170,16 +190,21 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       pool = count === "all" ? domainQuestions : domainQuestions.slice(0, count);
     }
     if (pool.length === 0) return;
-    const ordered = shuffle(pool);
-    const fresh: QuizSession = {
-      mode,
-      requestedCount: count,
-      questionIds: ordered.map((q) => q.id),
-      optionOrder: buildOptionOrder(ordered),
-      currentIndex: 0,
-      answers: {},
-      createdAt: Date.now(),
-    };
+    const fresh = createSession(mode, count, pool);
+    setSession(fresh);
+    setFinished(false);
+    saveSession(fresh);
+  }, []);
+
+  // Starts a new session from an explicit list of question ids (for example,
+  // the questions answered wrong in the session that just finished).
+  const startRetry = useCallback((questionIds: string[]) => {
+    const pool = questionIds.flatMap((id) => {
+      const question = QUESTIONS_BY_ID.get(id);
+      return question ? [question] : [];
+    });
+    if (pool.length === 0) return;
+    const fresh = createSession("retry", pool.length, pool);
     setSession(fresh);
     setFinished(false);
     saveSession(fresh);
@@ -274,12 +299,13 @@ export function QuizProvider({ children }: { children: ReactNode }) {
       finished,
       ...derived,
       startSession,
+      startRetry,
       answer,
       next,
       quit,
       resume,
     }),
-    [hydrated, session, finished, derived, startSession, answer, next, quit, resume]
+    [hydrated, session, finished, derived, startSession, startRetry, answer, next, quit, resume]
   );
 
   return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>;

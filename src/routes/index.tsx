@@ -71,7 +71,7 @@ function Home() {
           </p>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">{exam.name}</h1>
           <p className="mt-1 text-sm font-medium text-muted-foreground">
-            {exam.fullName} · Pass mark {exam.passTarget}%
+            {exam.fullName} · Study target {exam.passTarget}%
           </p>
           <p className="mt-2 text-sm text-foreground/90">
             Pick a topic, answer, learn why. Your progress stays on this device.
