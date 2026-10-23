@@ -104,7 +104,7 @@
       "plainEnglishLocal": {
         "sw": "Jukwaa kama huduma (PaaS) inamaanisha mtoa huduma anasimamia seva na mfumo endeshi, na wewe unaleta programu yako na data tu. Ni kama kukodisha jiko lililokamilika: jiko na friji vinatunzwa na wengine, wewe unapika mapishi yako tu."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/training/modules/describe-cloud-service-types"
     },
     {
       "id": "cc-05",
@@ -260,7 +260,7 @@
       "plainEnglishLocal": {
         "sw": "Azure Functions huendesha kipande kidogo cha msimbo (code) pale tu kitu kinapoianzisha, na huhitaji kusimamia seva yoyote. Ni kama kumwita bodaboda pale tu unapokuwa na mzigo: unalipa kwa kila safari, si kumngojesha siku nzima."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-compute-networking-services/"
     },
     {
       "id": "as-06",
@@ -362,7 +362,7 @@
       "plainEnglishLocal": {
         "sw": "Role-based access control (RBAC) huamua nani anaweza kufanya nini, na wapi. Ni kama kumpa msaidizi wa duka ufunguo wa droo ya pesa lakini si wa salama: unatoa ufikiaji unaohitajika na kazi hiyo tu."
       },
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-azure-identity-access-security"
     },
     {
       "id": "as-12",
@@ -426,7 +426,7 @@
       ],
       "correctOptionId": "d",
       "plainEnglish": "Tags are name-and-value labels you attach to Azure resources, such as department = Finance. They let you search, group and report on resources and costs in ways that cut across resource groups. It is like putting coloured stickers on items in a shop so you can quickly find everything belonging to one supplier.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-cost-management-azure"
     },
     {
       "id": "mg-04",
@@ -512,7 +512,7 @@
       ],
       "correctOptionId": "c",
       "plainEnglish": "Azure Arc lets you manage servers and other resources that live outside Azure, such as in your own datacenter or another cloud, from Azure as if they were part of it. It is like a single control room that can watch the CCTV cameras of branches in many different towns.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/1-introduction"
     },
     {
       "id": "mg-09",
@@ -528,7 +528,7 @@
       ],
       "correctOptionId": "a",
       "plainEnglish": "Infrastructure as code (IaC) means describing the resources you want in a file, so they can be created the same way every time. ARM templates are Azure's way of doing this. It is like a written recipe: anyone can follow it and cook the same dish, instead of cooking from memory each time.",
-      "learnMoreUrl": "https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-900"
+      "learnMoreUrl": "https://learn.microsoft.com/en-us/training/modules/describe-features-tools-manage-deploy-azure-resources/1-introduction"
     },
     {
       "id": "mg-10",
